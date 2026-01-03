@@ -79,7 +79,7 @@ No local Python installation is required if using Docker.
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/realhanswu/recommendation-engine.git
+git clone https://github.com/realhanswu/AnimeRec.git
 cd recommendation-engine
 
 # 2. Build and Start Services
