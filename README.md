@@ -25,16 +25,44 @@ A high-performance, asynchronous recommendation backend designed to handle **10k
 ## 📂 Project Structure
 
 ```text
-recommendation_engine/
-├── app/
-│   ├── api/          # Route handlers & Dependency Injection
-│   ├── core/         # Config & Lifespan (Startup) logic
-│   ├── ml/           # Model wrappers & ONNX interaction
-│   ├── services/     # Business logic (Batching, Retrieval)
-│   └── schemas/      # Pydantic data models
-├── artifacts/        # Model files (dummy_model)
-├── Dockerfile        # Multi-stage build
-└── docker-compose.yml
+app/
+│
+├── .env                        # Local environment variables (not committed to git)
+├── .gitignore                  # Git ignore rules (e.g., __pycache__, .env)
+├── Dockerfile                  # Instructions to build the API container
+├── docker-compose.yml          # Orchestration for API, Redis, and Qdrant
+├── requirements.txt            # Python dependencies (fastapi, redis, etc.)
+│
+├── app/                        # Main Application Code
+│   ├── __init__.py             # Makes 'app' a Python package
+│   ├── main.py                 # Application entry point (FastAPI app init)
+│   │
+│   ├── api/                    # API Layer (Controllers)
+│   │   ├── __init__.py
+│   │   ├── deps.py             # Dependency Injection (getting the RecService)
+│   │   └── v1/                 # Version 1 API routes
+│   │       ├── __init__.py
+│   │       └── recommendations.py  # Endpoint logic (POST /predict)
+│   │
+│   ├── core/                   # Core Configuration & Infrastructure
+│   │   ├── __init__.py
+│   │   ├── config.py           # Pydantic Settings (Environment variables)
+│   │   └── lifespan.py         # Startup/Shutdown logic (Redis connection, Model loading)
+│   │
+│   ├── ml/                     # Machine Learning Specifics
+│   │   ├── __init__.py
+│   │   └── model_loader.py     # Wrapper for the ONNX/Wide&Deep model
+│   │
+│   ├── schemas/                # Pydantic Models (Data Transfer Objects)
+│   │   ├── __init__.py
+│   │   └── rec.py              # Request/Response schemas (UserContext, RecItem)
+│   │
+│   └── services/               # Business Logic Layer
+│       ├── __init__.py
+│       └── batch_engine.py     # The "Engine": Batching, Retrieval, and Ranking logic
+│
+└── artifacts/                  # Static files needed at runtime
+    └── dummy_model             # Placeholder file for the ML model
 ```
 
 
