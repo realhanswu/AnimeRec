@@ -80,7 +80,7 @@ No local Python installation is required if using Docker.
 ```bash
 # 1. Clone the repository
 git clone https://github.com/realhanswu/AnimeRec.git
-cd recommendation-engine
+cd AnimeRec
 
 # 2. Build and Start Services
 docker-compose up --build
