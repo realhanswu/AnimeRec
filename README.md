@@ -1,9 +1,3 @@
-<img src="https://r2cdn.perplexity.ai/pplx-full-logo-primary-dark%402x.png" style="height:64px;margin-right:32px"/>
-
-# Please write project run instructions for github record
-
-Here is a professional `README.md` template tailored for your project. You can copy-paste this directly into your repository.
-
 ***
 
 # Scalable Recommendation Engine (FastAPI + Redis + Docker)
